@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" role="img" aria-label="Baskets ivoire et vert"><defs>
+<filter id="shadow" x="-40%" y="-40%" width="180%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+<filter id="soft" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#24352a" flood-opacity=".16"/></filter>
+<linearGradient id="olive" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8a9a6c"/><stop offset=".46" stop-color="#657d58"/><stop offset="1" stop-color="#3f5b40"/></linearGradient>
+<linearGradient id="cream" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fffefa"/><stop offset=".55" stop-color="#f3f2e9"/><stop offset="1" stop-color="#d7dbce"/></linearGradient>
+<linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3d786a"/><stop offset=".6" stop-color="#20584e"/><stop offset="1" stop-color="#103c35"/></linearGradient>
+<linearGradient id="sand" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8d5b5"/><stop offset="1" stop-color="#b8996d"/></linearGradient>
+<linearGradient id="amber" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e3b26a"/><stop offset=".4" stop-color="#c58a48"/><stop offset="1" stop-color="#8a542e"/></linearGradient>
+</defs><rect width="600" height="500" fill="#edf0e7"/><ellipse cx="314" cy="377" rx="184" ry="17" fill="#496345" opacity=".12" filter="url(#shadow)"/><g filter="url(#soft)">
+<path d="M151 294c-10-28 7-72 26-91 15 23 30 30 50 30l55-49c9-8 20-8 28 0l64 58c21 15 51 20 79 26 28 6 43 22 44 42l-4 23c-91 28-251 30-342 7Z" fill="url(#cream)"/>
+<path d="M151 314c109 19 230 18 345-7l-2 30c-21 17-57 24-102 28l-156 4c-42-1-70-8-87-21Z" fill="#ebeee2"/><path d="M152 337c99 19 250 16 341-9" fill="none" stroke="#c3ccbc" stroke-width="2"/>
+<path d="M174 209c8 35 28 49 57 51l-24 40-53-4c-8-28 4-69 20-87Z" fill="url(#green)"/>
+<path d="m277 201 52 33-42 56-58-28Z" fill="#e3e8d9"/><path d="m254 235 44 13m-54-1 44 13m-54-1 43 13m-52-1 41 14" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+<path d="M311 256c24 1 53 17 80 29-26 3-47 6-69 16-12-10-21-17-40-19Z" fill="#356655"/><path d="M321 311c35-16 85-22 142-17" fill="none" stroke="#d8ddcd" stroke-width="2"/>
+<path d="m166 317 28-43m197 18 12-31" fill="none" stroke="#d3d9c9" stroke-width="2"/>
+<path d="m217 351 2 13m31-12 1 15m31-15v15m31-15v15m31-16v15m31-17v15m31-18v14m31-20v14m31-21v13" stroke="#c7cfbf" stroke-width="3"/>
+</g></svg>
