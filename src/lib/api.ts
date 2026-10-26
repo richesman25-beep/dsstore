@@ -15,6 +15,24 @@ type DemoState = AdminData & { receipts: Record<string, { payload: string; recei
 let memoryState: DemoState | null = null
 function freshDemo(): DemoState { return { ...createDemoData(), receipts: {} } }
 function clone<T>(value: T): T { return structuredClone(value) }
+function upgradeDemoImages(state: DemoState): DemoState {
+  const builtIns = new Map(createDemoData().products.map(product => [product.id, product.image_url]))
+  let changed = false
+  state.products = state.products.map(product => {
+    const currentImage = builtIns.get(product.id)
+    if (currentImage && product.image_url === currentImage.replace(/\.webp$/, '.svg')) {
+      changed = true
+      return { ...product, image_url: currentImage }
+    }
+    return product
+  })
+  // Update built-in visuals without resetting an existing demonstration's edits,
+  // settings, reserved stock, orders or private tracking receipts.
+  if (changed) {
+    try { if (typeof localStorage !== 'undefined') localStorage.setItem(DEMO_KEY, JSON.stringify(state)) } catch { /* Keep the upgraded state in session memory. */ }
+  }
+  return state
+}
 function readDemo(): DemoState {
   if (memoryState) return clone(memoryState)
   try {
@@ -22,7 +40,7 @@ function readDemo(): DemoState {
     if (stored) {
       const parsed: unknown = JSON.parse(stored)
       if (parsed && typeof parsed === 'object' && Array.isArray((parsed as DemoState).products) && Array.isArray((parsed as DemoState).orders) && (parsed as DemoState).receipts) {
-        memoryState = parsed as DemoState
+        memoryState = upgradeDemoImages(parsed as DemoState)
         return clone(memoryState)
       }
     }

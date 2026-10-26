@@ -6,7 +6,7 @@ La boutique est conçue pour les habitants du Grand Sud d’Haïti : interface e
 
 Sans configuration Supabase, l’application utilise un catalogue d’illustration. Les opérations disponibles dans ce mode sont des **simulations locales**, enregistrées dans le navigateur utilisé. Elles ne transmettent aucune commande à la boutique, ne réservent aucun stock réel et n’effectuent aucun paiement.
 
-Les prix, produits et visuels du catalogue de démonstration servent à présenter l’interface. Ils ne constituent pas une offre commerciale réelle. Les illustrations SVG sont intégrées au projet, sans téléchargement de police ni bibliothèque d’images distante.
+Les prix, produits et visuels du catalogue de démonstration servent à présenter l’interface. Ils ne constituent pas une offre commerciale réelle. Les photos de présentation générées en WebP, les illustrations de secours et la police Manrope sont servies depuis le projet, sans requête vers une banque d’images ni un service de polices distant. Leur provenance est documentée dans [ASSETS.md](ASSETS.md) et la licence de la police figure dans `public/fonts/OFL.txt`.
 
 Les essais réalisés dans un navigateur ne sont pas partagés avec un autre appareil. Effacer les données du navigateur ou réinitialiser la démonstration efface ces essais. Éviter de saisir des coordonnées personnelles réelles pendant les tests.
 

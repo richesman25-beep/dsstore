@@ -48,6 +48,16 @@ describe('storefront interactions', () => {
     expect(screen.getAllByRole('button', { name: /^Ajouter .+ au panier$/ })).toHaveLength(2)
   })
 
+  it('searches the whole shop from the header after selecting a category', async () => {
+    const user = userEvent.setup()
+    await openShop()
+    await user.click(within(screen.getByRole('group', { name: 'Catégories' })).getByRole('button', { name: 'Alimentation' }))
+    expect(screen.queryByRole('button', { name: 'Ajouter Écouteurs sans fil au panier' })).toBeNull()
+    await user.type(screen.getByRole('searchbox', { name: 'Rechercher dans la boutique' }), 'ecouteurs')
+    expect(screen.getByRole('button', { name: 'Ajouter Écouteurs sans fil au panier' })).toBeTruthy()
+    expect(screen.queryByRole('button', { name: 'Ajouter Riz de qualité · 5 kg au panier' })).toBeNull()
+  })
+
   it('switches all shopping controls to Haitian Creole and remembers that choice', async () => {
     const user = userEvent.setup()
     const app = await openShop()

@@ -2,7 +2,7 @@
 
 Boutique locale aux Cayes pour le Grand Sud d’Haïti. **Tout sa w bezwen, pi pre w.**
 
-Front-end React, TypeScript et Tailwind CSS, disponible en français et en créole haïtien. Interface responsive, illustrations SVG locales légères, administration et génération de factures PDF chargées à la demande.
+Front-end React, TypeScript et Tailwind CSS, disponible en français et en créole haïtien. Direction visuelle chaleureuse corail, jaune soleil et crème, photographies de démonstration WebP et police Manrope servies localement. Administration et génération de factures PDF chargées à la demande.
 
 ## Démarrer
 

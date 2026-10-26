@@ -26,6 +26,33 @@ function change(order: Order, extra: Partial<OrderUpdate>): OrderUpdate {
 }
 
 describe('sandbox clearly separated from a real store', () => {
+  it('upgrades the old built-in photos without losing customized data or orders', async () => {
+    const input = await enableDemoDelivery()
+    const receipt = await placeOrder(input)
+    const state = await getAdminData()
+    state.products[0] = { ...state.products[0], image_url: '/images/fan.svg', price: 4800 }
+    state.products[1].image_url = 'https://example.com/my-custom-bag.webp'
+    state.settings.pickup_address = 'Mon adresse personnalisée'
+    const receipts = { [input.idempotency_key]: { payload: JSON.stringify(input), receipt } }
+    const local = new Map([['dsstore:demo:v1', JSON.stringify({ ...state, receipts })]])
+    vi.stubGlobal('localStorage', {
+      getItem: (key: string) => local.get(key) ?? null,
+      setItem: (key: string, value: string) => { local.set(key, value) },
+    })
+    try {
+      vi.resetModules()
+      const reloaded = await import('../src/lib/api')
+      const upgraded = await reloaded.getAdminData()
+      expect(upgraded.products[0].image_url).toBe('/images/fan.webp')
+      expect(upgraded.products[0].price).toBe(4800)
+      expect(upgraded.products[0].stock).toBe(state.products[0].stock)
+      expect(upgraded.products[1].image_url).toBe('https://example.com/my-custom-bag.webp')
+      expect(upgraded.orders).toEqual(state.orders)
+      expect(upgraded.settings).toEqual(state.settings)
+      expect(JSON.parse(local.get('dsstore:demo:v1')!).receipts).toEqual(receipts)
+    } finally { vi.unstubAllGlobals() }
+  })
+
   it('does not advertise delivery coverage or pickup before admin activation', async () => {
     const catalog = await getCatalog()
     expect(catalog.demo).toBe(true)

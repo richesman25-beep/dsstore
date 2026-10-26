@@ -2,7 +2,7 @@ import type { AdminData, Product } from '../types'
 
 const product = (id: string, name_fr: string, name_ht: string, category_id: string, price: number, stock: number, image: string, extra: Partial<Product> = {}): Product => ({
   id, slug: id, name_fr, name_ht, category_id, price, stock,
-  image_url: `/images/${image}.svg`, active: true, featured: true, is_new: true,
+  image_url: `/images/${image}.webp`, active: true, featured: true, is_new: true,
   promotion_price: null, cost_price: Math.round(price * .65),
   description_fr: 'Article de démonstration pour découvrir la boutique. Les prix et les disponibilités sont illustratifs.',
   description_ht: 'Atik demonstrasyon pou dekouvri boutik la. Pri ak disponiblite yo se egzanp sèlman.',
